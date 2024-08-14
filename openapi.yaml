@@ -1,0 +1,487 @@
+openapi: "3.1.0"
+info:
+  title: UNGH Repository API
+  version: 1.0.0
+  description: API for retrieving information about GitHub repositories, organizations, and users.
+
+servers:
+  - url: https://ungh.cc
+
+paths:
+  /repos/{owner}/{name}:
+    get:
+      summary: Get GitHub repository information
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepoInfo'
+
+  /repos/{owner}/{name}/contributors:
+    get:
+      summary: Get repository contributors
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contributors'
+
+  /repos/{owner}/{name}/files/{branch}:
+    get:
+      summary: Get repository files tree on specific branch
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+        - $ref: '#/components/parameters/branch'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilesTree'
+
+  /repos/{owner}/{name}/files/{branch}/{path}:
+    get:
+      summary: Get file contents from a repository
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+        - $ref: '#/components/parameters/branch'
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileContents'
+
+  /repos/{owner}/{name}/readme:
+    get:
+      summary: Get repository readme file on main branch
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Readme'
+
+  /repos/{owner}/{name}/releases:
+    get:
+      summary: Get repository releases
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Releases'
+
+  /repos/{owner}/{name}/releases/latest:
+    get:
+      summary: Get latest repository release
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatestRelease'
+
+  /repos/{owner}/{name}/branches:
+    get:
+      summary: Get all the branches of a repository
+      parameters:
+        - $ref: '#/components/parameters/owner'
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branches'
+
+  /orgs/{owner}:
+    get:
+      summary: Get GitHub organization information
+      parameters:
+        - $ref: '#/components/parameters/owner'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgInfo'
+
+  /orgs/{owner}/repos:
+    get:
+      summary: Get GitHub organization repositories overview
+      parameters:
+        - $ref: '#/components/parameters/owner'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgRepos'
+
+  /stars/{repos}:
+    get:
+      summary: Get star information for one or more repositories or organizations
+      parameters:
+        - name: repos
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Comma-separated list of repositories or organizations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stars'
+
+  /users/{username}:
+    get:
+      summary: Find one GitHub user by username
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{username}/repos:
+    get:
+      summary: Get user repositories
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRepos'
+
+  /users/find/{query}:
+    get:
+      summary: Find one GitHub user by email or other query
+      parameters:
+        - name: query
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  parameters:
+    owner:
+      name: owner
+      in: path
+      required: true
+      schema:
+        type: string
+    name:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
+    branch:
+      name: branch
+      in: path
+      required: true
+      schema:
+        type: string
+
+  schemas:
+    RepoInfo:
+      type: object
+      properties:
+        repo:
+          type: object
+          properties:
+            id: 
+              type: integer
+            name: 
+              type: string
+            repo: 
+              type: string
+            description: 
+              type: string
+              nullable: true
+            createdAt: 
+              type: string
+              format: date-time
+            updatedAt: 
+              type: string
+              format: date-time
+            pushedAt: 
+              type: string
+              format: date-time
+            stars: 
+              type: integer
+            watchers: 
+              type: integer
+            forks: 
+              type: integer
+            defaultBranch: 
+              type: string
+
+    Contributors:
+      type: object
+      properties:
+        contributors:
+          type: array
+          items:
+            type: object
+            properties:
+              id: 
+                type: integer
+              username: 
+                type: string
+              contributions: 
+                type: integer
+
+    FilesTree:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            sha: 
+              type: string
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              path: 
+                type: string
+              mode: 
+                type: string
+              sha: 
+                type: string
+              size: 
+                type: integer
+
+    FileContents:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            url: 
+              type: string
+        file:
+          type: object
+          properties:
+            contents: 
+              type: string
+            html: 
+              type: string
+
+    Readme:
+      type: object
+      properties:
+        html: 
+          type: string
+        markdown: 
+          type: string
+
+    Releases:
+      type: object
+      properties:
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+
+    LatestRelease:
+      type: object
+      properties:
+        release:
+          $ref: '#/components/schemas/Release'
+
+    Release:
+      type: object
+      properties:
+        id: 
+          type: integer
+        tag: 
+          type: string
+        author: 
+          type: string
+        name: 
+          type: string
+        draft: 
+          type: boolean
+        prerelease: 
+          type: boolean
+        createdAt: 
+          type: string
+          format: date-time
+        publishedAt: 
+          type: string
+          format: date-time
+        markdown: 
+          type: string
+        html: 
+          type: string
+
+    Branches:
+      type: object
+      properties:
+        branches:
+          type: array
+          items:
+            type: object
+            properties:
+              name: 
+                type: string
+              commit:
+                type: object
+                properties:
+                  sha: 
+                    type: string
+                  url: 
+                    type: string
+              protected: 
+                type: boolean
+
+    OrgInfo:
+      type: object
+      properties:
+        org:
+          type: object
+          properties:
+            id: 
+              type: integer
+            name: 
+              type: string
+              nullable: true
+            description: 
+              type: string
+              nullable: true
+
+    OrgRepos:
+      type: object
+      properties:
+        repos:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepoSummary'
+
+    Stars:
+      type: object
+      properties:
+        totalStars: 
+          type: integer
+        stars:
+          type: object
+          additionalProperties:
+            type: integer
+
+    User:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            id: 
+              type: integer
+            name: 
+              type: string
+              nullable: true
+            twitter: 
+              type: string
+              nullable: true
+            username: 
+              type: string
+
+    UserRepos:
+      type: object
+      properties:
+        repos:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepoSummary'
+
+    RepoSummary:
+      type: object
+      properties:
+        id: 
+          type: integer
+        name: 
+          type: string
+        description: 
+          type: string
+          nullable: true
+        repo: 
+          type: string
+        stars: 
+          type: integer
+        pushedAt: 
+          type: string
+          format: date-time
+        createdAt: 
+          type: string
+          format: date-time
+        updatedAt: 
+          type: string
+          format: date-time
+        watchers: 
+          type: integer
+        forks: 
+          type: integer
+        defaultBranch: 
+          type: string

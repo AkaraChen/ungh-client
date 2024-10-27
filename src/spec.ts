@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-    "/repos/{owner}/{name}": {
+    '/repos/{owner}/{name}': {
         parameters: {
             query?: never;
             header?: never;
@@ -17,8 +17,8 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
                 };
                 cookie?: never;
             };
@@ -30,7 +30,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["RepoInfo"];
+                        'application/json': components['schemas']['RepoInfo'];
                     };
                 };
             };
@@ -43,7 +43,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/contributors": {
+    '/repos/{owner}/{name}/contributors': {
         parameters: {
             query?: never;
             header?: never;
@@ -56,8 +56,8 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
                 };
                 cookie?: never;
             };
@@ -69,7 +69,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["Contributors"];
+                        'application/json': components['schemas']['Contributors'];
                     };
                 };
             };
@@ -82,7 +82,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/files/{branch}": {
+    '/repos/{owner}/{name}/files/{branch}': {
         parameters: {
             query?: never;
             header?: never;
@@ -95,9 +95,9 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
-                    branch: components["parameters"]["branch"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
+                    branch: components['parameters']['branch'];
                 };
                 cookie?: never;
             };
@@ -109,7 +109,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["FilesTree"];
+                        'application/json': components['schemas']['FilesTree'];
                     };
                 };
             };
@@ -122,7 +122,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/files/{branch}/{path}": {
+    '/repos/{owner}/{name}/files/{branch}/{path}': {
         parameters: {
             query?: never;
             header?: never;
@@ -135,9 +135,9 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
-                    branch: components["parameters"]["branch"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
+                    branch: components['parameters']['branch'];
                     path: string;
                 };
                 cookie?: never;
@@ -150,7 +150,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["FileContents"];
+                        'application/json': components['schemas']['FileContents'];
                     };
                 };
             };
@@ -163,7 +163,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/readme": {
+    '/repos/{owner}/{name}/readme': {
         parameters: {
             query?: never;
             header?: never;
@@ -176,8 +176,8 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
                 };
                 cookie?: never;
             };
@@ -189,7 +189,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["Readme"];
+                        'application/json': components['schemas']['Readme'];
                     };
                 };
             };
@@ -202,7 +202,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/releases": {
+    '/repos/{owner}/{name}/releases': {
         parameters: {
             query?: never;
             header?: never;
@@ -215,8 +215,8 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
                 };
                 cookie?: never;
             };
@@ -228,7 +228,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["Releases"];
+                        'application/json': components['schemas']['Releases'];
                     };
                 };
             };
@@ -241,7 +241,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/releases/latest": {
+    '/repos/{owner}/{name}/releases/latest': {
         parameters: {
             query?: never;
             header?: never;
@@ -254,8 +254,8 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
                 };
                 cookie?: never;
             };
@@ -267,7 +267,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["LatestRelease"];
+                        'application/json': components['schemas']['LatestRelease'];
                     };
                 };
             };
@@ -280,7 +280,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/repos/{owner}/{name}/branches": {
+    '/repos/{owner}/{name}/branches': {
         parameters: {
             query?: never;
             header?: never;
@@ -293,8 +293,8 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
-                    name: components["parameters"]["name"];
+                    owner: components['parameters']['owner'];
+                    name: components['parameters']['name'];
                 };
                 cookie?: never;
             };
@@ -306,7 +306,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["Branches"];
+                        'application/json': components['schemas']['Branches'];
                     };
                 };
             };
@@ -319,7 +319,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/orgs/{owner}": {
+    '/orgs/{owner}': {
         parameters: {
             query?: never;
             header?: never;
@@ -332,7 +332,7 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
+                    owner: components['parameters']['owner'];
                 };
                 cookie?: never;
             };
@@ -344,7 +344,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["OrgInfo"];
+                        'application/json': components['schemas']['OrgInfo'];
                     };
                 };
             };
@@ -357,7 +357,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/orgs/{owner}/repos": {
+    '/orgs/{owner}/repos': {
         parameters: {
             query?: never;
             header?: never;
@@ -370,7 +370,7 @@ export interface paths {
                 query?: never;
                 header?: never;
                 path: {
-                    owner: components["parameters"]["owner"];
+                    owner: components['parameters']['owner'];
                 };
                 cookie?: never;
             };
@@ -382,7 +382,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["OrgRepos"];
+                        'application/json': components['schemas']['OrgRepos'];
                     };
                 };
             };
@@ -395,7 +395,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/stars/{repos}": {
+    '/stars/{repos}': {
         parameters: {
             query?: never;
             header?: never;
@@ -421,7 +421,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["Stars"];
+                        'application/json': components['schemas']['Stars'];
                     };
                 };
             };
@@ -434,7 +434,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/users/{username}": {
+    '/users/{username}': {
         parameters: {
             query?: never;
             header?: never;
@@ -459,7 +459,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["User"];
+                        'application/json': components['schemas']['User'];
                     };
                 };
             };
@@ -472,7 +472,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/users/{username}/repos": {
+    '/users/{username}/repos': {
         parameters: {
             query?: never;
             header?: never;
@@ -497,7 +497,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["UserRepos"];
+                        'application/json': components['schemas']['UserRepos'];
                     };
                 };
             };
@@ -510,7 +510,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/users/find/{query}": {
+    '/users/find/{query}': {
         parameters: {
             query?: never;
             header?: never;
@@ -535,7 +535,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["User"];
+                        'application/json': components['schemas']['User'];
                     };
                 };
             };
@@ -602,10 +602,10 @@ export interface components {
             markdown?: string;
         };
         Releases: {
-            releases?: components["schemas"]["Release"][];
+            releases?: components['schemas']['Release'][];
         };
         LatestRelease: {
-            release?: components["schemas"]["Release"];
+            release?: components['schemas']['Release'];
         };
         Release: {
             id?: number;
@@ -639,7 +639,7 @@ export interface components {
             };
         };
         OrgRepos: {
-            repos?: components["schemas"]["RepoSummary"][];
+            repos?: components['schemas']['RepoSummary'][];
         };
         Stars: {
             totalStars?: number;
@@ -656,7 +656,7 @@ export interface components {
             };
         };
         UserRepos: {
-            repos?: components["schemas"]["RepoSummary"][];
+            repos?: components['schemas']['RepoSummary'][];
         };
         RepoSummary: {
             id?: number;
